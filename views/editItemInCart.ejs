@@ -1,0 +1,12 @@
+<%- include('page_header') %>
+<div class="container">
+  <form action="" method="post">
+    <div><img src="../images/<%= product.img %>"  width="200px"alt=""></div>
+    <div>barcode : <%= product.barcode %></div>
+    <div>รายการ : <%= product.name %></div>
+    <div>ราคา : <%= product.price %></div>
+    <div> จํานวน :<input type="text" name="qty" value="<%= product.qty %>"class="form-control"/></div>
+    <button type="submit" class="btn btn-info mt-3">Save</button>
+  </form>
+</div>
+<%- include('page_footer') %>

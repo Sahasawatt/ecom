@@ -1,0 +1,55 @@
+<%- include('page_header') %>
+<div class="container">
+    <div class="h4">ตะกร้าสินค้า</div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th width="140px"></th>
+                <th width="150px">ภาพสินค้า</th>
+                <th width="100px">บาร์โค๊ด</th>
+                <th>รายการ</th>
+                <th width="100px" class="text-right">ราคา</th>
+                <th width="100px" class="text-right">จํานวน</th>
+                <th width="100px" class="text-right">ยอดรวม</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% products.forEach((product) => { %>
+                <tr>
+                    <td class="text-center">
+                        <a href="/editItemInCart/<%= product.id %>" class="btn btn-info">
+                            <span class="material-icons material-symbols-outlined material-icons">
+                                edit
+                            </span>
+                        </a>
+                        <a href="/deleteItemInCart/<%= product.id %>" onclick="return confirm('Are you sure??')" class="btn btn-danger">
+                            <span class="material-icons material-symbols-outlined material-icons">
+                                close
+                            </span>
+                        </a>
+                    <td><img src="images/<%= product.img %>" height="100px" width="150px" alt=""></td>
+                    <td><%= product.barcode %></td>
+                    <td><%= product.name %></td>
+                    <td class="text-right"><%= product.price %></td>
+                    <td class="text-right"><%= product.qty %></td>
+                    <td class="text-right"><%= product.qty * product.price %></td>
+                </tr>
+
+            <% }) %>
+        </tbody>
+    </table>
+    <div class="text-center">
+        รวม <%= totalQty %> ชิ้น เป็นเงิน <%= totalPrice %> บาท
+    </div>
+
+    <div class="text-center mt-3">
+        <a href="/confirmOrder" class="btn btn-info btn-lg">
+            ยินยันการซื้อ
+            <span class="material-icons material-symbols-outlined material-icons">
+                navigate_next
+            </span>
+        </a>
+    </div>
+</div>
+
+<%- include('page_footer') %>
